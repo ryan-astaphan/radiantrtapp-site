@@ -6,6 +6,7 @@ Static site for Radiant RT. Hosts:
 - `/privacy-policy.html` — privacy policy
 - `/terms-of-use.html` — terms of use
 - `/support.html` — support + FAQ
+- `/delete-account.html` — account deletion instructions (required by Google Play Data Safety)
 
 ## Hosting on GitHub Pages
 
