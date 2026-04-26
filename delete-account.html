@@ -1,164 +1,155 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Delete your account · Radiant RT</title>
-  <meta name="description" content="How to delete your Radiant RT account and associated data." />
-  <meta name="robots" content="noindex" />
-  <style>
-    :root { color-scheme: light dark; }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #0f172a;
-      background: #f8fafc;
-    }
-    @media (prefers-color-scheme: dark) {
-      body { color: #e2e8f0; background: #0b1220; }
-      .card { background: #0f172a; border-color: #1e293b; }
-      a { color: #38bdf8; }
-      .muted { color: #94a3b8; }
-      table { border-color: #1e293b; }
-      th, td { border-color: #1e293b; }
-      thead { background: #0f172a; }
-    }
-    main { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; }
-    h1 { font-size: 2rem; margin: 0 0 0.25rem; }
-    h2 { margin: 2rem 0 0.75rem; font-size: 1.2rem; }
-    h3 { margin: 1.25rem 0 0.5rem; font-size: 1.05rem; }
-    p.lead { color: #475569; margin-top: 0; }
-    .muted { color: #64748b; }
-    .card {
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 20px 22px;
-      margin: 16px 0;
-    }
-    ol li, ul li { margin: 0.4rem 0; }
-    a { color: #0284c7; }
-    code {
-      background: rgba(148,163,184,0.18);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.9em;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 8px 0 16px;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    thead { background: #f1f5f9; }
-    th, td {
-      text-align: left;
-      padding: 10px 12px;
-      border-bottom: 1px solid #e2e8f0;
-      font-size: 0.95rem;
-      vertical-align: top;
-    }
-    tr:last-child td { border-bottom: 0; }
-    th { font-weight: 600; }
-    .alert {
-      border-left: 4px solid #0ea5e9;
-      padding: 12px 16px;
-      background: rgba(14,165,233,0.08);
-      border-radius: 8px;
-      margin: 16px 0;
-      font-size: 0.95rem;
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Delete your account · Radiant RT</title>
+<meta name="description" content="How to delete your Radiant RT account and associated data."/>
+<meta name="robots" content="noindex"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Public+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#0EA5E9",
+                        "background": "#ffffff",
+                        "on-background": "#0F172A",
+                        "surface-container-low": "#F9FAFB",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#475569",
+                        "outline-variant": "#E2E8F0"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; background-color: #ffffff; color: #0F172A; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); }
+        .prose h2 { font-size: 1.4rem; font-weight: 700; margin-top: 2.25rem; margin-bottom: 0.75rem; color: #0F172A; }
+        .prose h3 { font-size: 1.05rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #0F172A; }
+        .prose p { margin: 0.75rem 0; line-height: 1.65; color: #475569; }
+        .prose ul, .prose ol { padding-left: 1.5rem; margin: 0.75rem 0; color: #475569; }
+        .prose li { margin: 0.4rem 0; line-height: 1.6; }
+        .prose strong { color: #0F172A; font-weight: 600; }
+        .prose a { color: #0EA5E9; text-decoration: underline; text-underline-offset: 2px; }
+        .prose code { background: rgba(148,163,184,0.18); padding: 0.1em 0.4em; border-radius: 0.2em; font-size: 0.9em; }
+        .prose table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; border: 1px solid #E2E8F0; border-radius: 0.5rem; overflow: hidden; }
+        .prose th, .prose td { border-bottom: 1px solid #E2E8F0; padding: 0.6rem 0.85rem; text-align: left; vertical-align: top; }
+        .prose tr:last-child td { border-bottom: 0; }
+        .prose th { background: #F0F9FF; font-weight: 600; color: #0F172A; }
+        .info-card { background: #F9FAFB; border: 1px solid #E2E8F0; border-radius: 1rem; padding: 1.25rem 1.5rem; margin: 1rem 0; }
+        .alert-info { background: #F0F9FF; border-left: 4px solid #0EA5E9; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 1rem 0; color: #0F172A; }
+    </style>
 </head>
-<body>
-  <main>
-    <p><a href="./">&larr; Back to Radiant RT</a></p>
-    <h1>Delete your Radiant RT account</h1>
-    <p class="lead">This page explains how to delete your <strong>Radiant RT</strong> account, what data is removed, what is kept, and for how long.</p>
-    <p class="muted">Radiant RT is published by <strong>RADIANT ONCOLOGY WELLNESS LLC</strong> (Seattle, Washington, USA).</p>
+<body class="bg-background text-on-background">
+<nav class="fixed top-0 left-0 right-0 z-50 glass-nav shadow-sm">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-5xl mx-auto">
+<a href="index.html" class="text-2xl font-bold text-primary tracking-tight font-headline">Radiant RT</a>
+<a href="index.html" class="text-sm text-slate-600 font-medium hover:text-primary transition-colors">← Home</a>
+</div>
+</nav>
+<main class="max-w-3xl mx-auto px-6 pt-32 pb-24 prose">
+<h1 class="text-4xl font-extrabold tracking-tight mb-2">Delete your Radiant RT account</h1>
+<p class="text-lg text-on-surface-variant">This page explains how to delete your <strong>Radiant RT</strong> account, what data is removed, what is kept, and for how long.</p>
+<p class="text-sm text-on-surface-variant mb-8">Radiant RT is published by <strong>RADIANT ONCOLOGY WELLNESS LLC</strong> (Seattle, Washington, USA).</p>
 
-    <h2>Option 1 — Delete from inside the app (fastest)</h2>
-    <div class="card">
-      <ol>
-        <li>Open <strong>Radiant RT</strong> on your phone.</li>
-        <li>Tap the <strong>More</strong> tab in the bottom navigation.</li>
-        <li>Tap <strong>Profile</strong>.</li>
-        <li>Scroll to the bottom and tap <strong>Delete Account</strong>.</li>
-        <li>Confirm the deletion when prompted.</li>
-      </ol>
-      <p class="muted" style="margin-bottom:0;">Your account is marked for deletion immediately. All associated data is erased from our active systems within <strong>30 days</strong>.</p>
-    </div>
+<h2>Option 1 — Delete from inside the app (fastest)</h2>
+<div class="info-card">
+<ol>
+<li>Open <strong>Radiant RT</strong> on your phone.</li>
+<li>Tap the <strong>More</strong> tab in the bottom navigation.</li>
+<li>Tap <strong>Profile</strong>.</li>
+<li>Scroll to the bottom and tap <strong>Delete Account</strong>.</li>
+<li>Confirm the deletion when prompted.</li>
+</ol>
+<p class="text-sm">Your account is marked for deletion immediately. All associated data is erased from our active systems within <strong>30 days</strong>.</p>
+</div>
 
-    <h2>Option 2 — Request deletion by email</h2>
-    <div class="card">
-      <p>If you can no longer sign in, or prefer not to use the in-app flow, email us from the address on your account:</p>
-      <p><strong>Email:</strong> <a href="mailto:support@mail.radiantrtapp.com?subject=Delete%20my%20Radiant%20RT%20account">support@mail.radiantrtapp.com</a></p>
-      <p>In the subject line include "<strong>Delete my Radiant RT account</strong>". We'll confirm your identity, action the deletion, and email you once it is complete — typically within 2 business days, and always within 30 days.</p>
-    </div>
+<h2>Option 2 — Request deletion by email</h2>
+<div class="info-card">
+<p>If you can no longer sign in, or prefer not to use the in-app flow, email us from the address on your account:</p>
+<p><strong>Email:</strong> <a href="mailto:support@mail.radiantrtapp.com?subject=Delete%20my%20Radiant%20RT%20account">support@mail.radiantrtapp.com</a></p>
+<p>In the subject line include "<strong>Delete my Radiant RT account</strong>". We'll confirm your identity, action the deletion, and email you once it is complete — typically within 2 business days, and always within 30 days.</p>
+</div>
 
-    <h2>What data is deleted</h2>
-    <p>When you delete your account, we remove the following from our active systems within 30 days:</p>
-    <table>
-      <thead>
-        <tr><th>Data type</th><th>What it includes</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Account</td><td>Email address, authentication credentials, display name.</td></tr>
-        <tr><td>Profile</td><td>Treatment start date, treatment site, and any profile preferences you entered.</td></tr>
-        <tr><td>Daily check-ins</td><td>All 1–10 symptom scores you logged (Energy, Skin, Pain, Mood, Sleep) and any notes.</td></tr>
-        <tr><td>Disclaimer acknowledgements</td><td>Records that you acknowledged the in-app medical disclaimer.</td></tr>
-        <tr><td>Device identifiers</td><td>Push-notification tokens and internal device identifiers linked to your account.</td></tr>
-        <tr><td>Subscription entitlement link</td><td>The link between your account and your App Store / Google Play subscription record inside our systems.</td></tr>
-      </tbody>
-    </table>
+<h2>What data is deleted</h2>
+<p>When you delete your account, we remove the following from our active systems within 30 days:</p>
+<table>
+<thead>
+<tr><th>Data type</th><th>What it includes</th></tr>
+</thead>
+<tbody>
+<tr><td>Account</td><td>Email address, authentication credentials, display name.</td></tr>
+<tr><td>Profile</td><td>Treatment start date, treatment site, and any profile preferences you entered.</td></tr>
+<tr><td>Daily check-ins</td><td>All 1–10 symptom scores you logged (Energy, Skin, Pain, Mood, Sleep) and any notes.</td></tr>
+<tr><td>Disclaimer acknowledgements</td><td>Records that you acknowledged the in-app medical disclaimer.</td></tr>
+<tr><td>Device identifiers</td><td>Push-notification tokens and internal device identifiers linked to your account.</td></tr>
+<tr><td>Subscription entitlement link</td><td>The link between your account and your App Store / Google Play subscription record inside our systems.</td></tr>
+</tbody>
+</table>
 
-    <h2>What data is kept, and why</h2>
-    <p>A small amount of information is retained after account deletion, only where we are required to or where it no longer identifies you:</p>
-    <table>
-      <thead>
-        <tr><th>Data type</th><th>Reason</th><th>Retention</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Purchase / subscription transaction records</td>
-          <td>Required for tax, accounting, and consumer-protection compliance. These live with Apple, Google, and our payments provider — not with us directly.</td>
-          <td>Typically 7 years (varies by jurisdiction and store).</td>
-        </tr>
-        <tr>
-          <td>Aggregated, de-identified analytics</td>
-          <td>Event counts (e.g. "number of check-ins this week") that cannot be linked back to you once your account is deleted.</td>
-          <td>Retained indefinitely in aggregate form.</td>
-        </tr>
-        <tr>
-          <td>Support email history</td>
-          <td>Any emails you previously sent to <code>support@mail.radiantrtapp.com</code> remain in our inbox records unless you specifically ask us to delete them.</td>
-          <td>Up to 2 years, then purged.</td>
-        </tr>
-        <tr>
-          <td>Backups</td>
-          <td>Active-system deletion happens within 30 days; rolling backups may contain your data briefly after that.</td>
-          <td>Backups fully age out within 90 days of deletion.</td>
-        </tr>
-      </tbody>
-    </table>
+<h2>What data is kept, and why</h2>
+<p>A small amount of information is retained after account deletion, only where we are required to or where it no longer identifies you:</p>
+<table>
+<thead>
+<tr><th>Data type</th><th>Reason</th><th>Retention</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Purchase / subscription transaction records</td>
+<td>Required for tax, accounting, and consumer-protection compliance. These live with Apple, Google, and our payments provider — not with us directly.</td>
+<td>Typically 7 years (varies by jurisdiction and store).</td>
+</tr>
+<tr>
+<td>Aggregated, de-identified analytics</td>
+<td>Event counts (e.g. "number of check-ins this week") that cannot be linked back to you once your account is deleted.</td>
+<td>Retained indefinitely in aggregate form.</td>
+</tr>
+<tr>
+<td>Support email history</td>
+<td>Any emails you previously sent to <code>support@mail.radiantrtapp.com</code> remain in our inbox records unless you specifically ask us to delete them.</td>
+<td>Up to 2 years, then purged.</td>
+</tr>
+<tr>
+<td>Backups</td>
+<td>Active-system deletion happens within 30 days; rolling backups may contain your data briefly after that.</td>
+<td>Backups fully age out within 90 days of deletion.</td>
+</tr>
+</tbody>
+</table>
 
-    <h2>Cancel your subscription first</h2>
-    <div class="alert">
-      Deleting your Radiant RT account <strong>does not automatically cancel</strong> an active subscription, because subscriptions are managed by Apple or Google — not by us. Cancel first, then delete.
-    </div>
-    <ul>
-      <li><strong>iPhone:</strong> Settings → your name → Subscriptions → Radiant Complete → Cancel.</li>
-      <li><strong>Android:</strong> Play Store app → your profile → Payments &amp; subscriptions → Subscriptions → Radiant Complete → Cancel.</li>
-    </ul>
+<h2>Cancel your subscription first</h2>
+<div class="alert-info">
+Deleting your Radiant RT account <strong>does not automatically cancel</strong> an active subscription, because subscriptions are managed by Apple or Google — not by us. Cancel first, then delete.
+</div>
+<ul>
+<li><strong>iPhone:</strong> Settings → your name → Subscriptions → Radiant Complete → Cancel.</li>
+<li><strong>Android:</strong> Play Store app → your profile → Payments &amp; subscriptions → Subscriptions → Radiant Complete → Cancel.</li>
+</ul>
 
-    <h2>Questions</h2>
-    <p>Email <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a>. A human reads every message.</p>
-    <p class="muted">Mailing address: RADIANT ONCOLOGY WELLNESS LLC, 3644 Interlake Ave N, Seattle, WA 98103, USA.</p>
-
-    <p style="margin-top:48px;"><a href="./privacy-policy.html">Privacy Policy</a> · <a href="./terms-of-use.html">Terms of Use</a> · <a href="./support.html">Support</a></p>
-  </main>
+<h2>Questions</h2>
+<p>Email <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a>. A human reads every message.</p>
+<p class="text-sm">Mailing address: RADIANT ONCOLOGY WELLNESS LLC, 3644 Interlake Ave N, Seattle, WA 98103, USA.</p>
+</main>
+<footer class="bg-surface-container-low py-12 px-8 border-t border-outline-variant/40">
+<div class="max-w-5xl mx-auto text-center text-sm text-on-surface-variant">
+<p class="mb-2">© 2026 Radiant Oncology Wellness LLC. Daily support for radiation therapy patients.</p>
+<p>
+<a class="hover:text-primary" href="index.html">Home</a> ·
+<a class="hover:text-primary" href="support.html">Support</a> ·
+<a class="hover:text-primary" href="privacy-policy.html">Privacy</a> ·
+<a class="hover:text-primary" href="terms-of-use.html">Terms</a> ·
+<a class="hover:text-primary" href="physicians.html">For Clinicians</a>
+</p>
+</div>
+</footer>
 </body>
 </html>

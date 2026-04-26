@@ -1,180 +1,211 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Privacy Policy · Radiant RT</title>
-  <meta name="description" content="Privacy Policy for the Radiant RT mobile app." />
-  <meta name="robots" content="noindex" />
-  <style>
-    :root { color-scheme: light dark; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #0f172a;
-      background: #fff;
-      padding: 24px 20px 64px;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-    @media (prefers-color-scheme: dark) {
-      body { color: #e2e8f0; background: #0b1220; }
-      a { color: #38bdf8; }
-      table, th, td { border-color: #334155 !important; }
-      blockquote { background: #0f172a; border-left-color: #0ea5e9 !important; }
-    }
-    h1 { font-size: 1.75rem; margin: 0 0 0.25rem; }
-    h2 { margin-top: 2rem; font-size: 1.25rem; }
-    h3 { margin-top: 1.5rem; font-size: 1.05rem; }
-    .meta { color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem; }
-    blockquote {
-      margin: 1rem 0;
-      padding: 0.75rem 1rem;
-      background: #f1f5f9;
-      border-left: 4px solid #0ea5e9;
-      border-radius: 6px;
-    }
-    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; }
-    th, td { border: 1px solid #e2e8f0; padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-    th { background: rgba(14,165,233,0.08); }
-    code { background: rgba(100,116,139,0.15); padding: 0 4px; border-radius: 3px; }
-    ul { padding-left: 1.25rem; }
-    a { color: #0284c7; }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy · Radiant RT</title>
+<meta name="description" content="Privacy Policy for the Radiant RT mobile app."/>
+<meta name="robots" content="noindex"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Public+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#0EA5E9",
+                        "primary-fixed": "#BAE6FD",
+                        "background": "#ffffff",
+                        "on-background": "#0F172A",
+                        "surface": "#ffffff",
+                        "on-surface": "#0F172A",
+                        "surface-container-low": "#F9FAFB",
+                        "on-surface-variant": "#475569",
+                        "outline-variant": "#E2E8F0"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; background-color: #ffffff; color: #0F172A; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); }
+        .prose h2 { font-size: 1.4rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #0F172A; }
+        .prose h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #0F172A; }
+        .prose p { margin: 0.75rem 0; line-height: 1.65; color: #475569; }
+        .prose ul, .prose ol { padding-left: 1.5rem; margin: 0.75rem 0; color: #475569; }
+        .prose li { margin: 0.4rem 0; line-height: 1.6; }
+        .prose strong { color: #0F172A; font-weight: 600; }
+        .prose a { color: #0EA5E9; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { text-decoration-thickness: 2px; }
+        .prose blockquote { background: #F0F9FF; border-left: 4px solid #0EA5E9; padding: 1rem 1.25rem; border-radius: 0.5rem; margin: 1.25rem 0; }
+        .prose blockquote p { color: #0F172A; margin: 0.4rem 0; }
+        .prose table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; border: 1px solid #E2E8F0; border-radius: 0.5rem; overflow: hidden; }
+        .prose th, .prose td { border-bottom: 1px solid #E2E8F0; padding: 0.6rem 0.85rem; text-align: left; vertical-align: top; }
+        .prose tr:last-child td { border-bottom: 0; }
+        .prose th { background: #F0F9FF; font-weight: 600; color: #0F172A; }
+        .prose code { background: rgba(148,163,184,0.18); padding: 0.1em 0.4em; border-radius: 0.2em; font-size: 0.9em; }
+    </style>
 </head>
-<body>
-  <h1>Privacy Policy</h1>
-  <p class="meta">Radiant RT — Symptom Tracker · Effective: April 17, 2026 · Last updated: April 17, 2026</p>
+<body class="bg-background text-on-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass-nav shadow-sm">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-5xl mx-auto">
+<a href="index.html" class="text-2xl font-bold text-primary tracking-tight font-headline">Radiant RT</a>
+<a href="index.html" class="text-sm text-slate-600 font-medium hover:text-primary transition-colors">← Home</a>
+</div>
+</nav>
+<main class="max-w-3xl mx-auto px-6 pt-32 pb-24 prose">
+<h1 class="text-4xl font-extrabold tracking-tight mb-2">Privacy Policy</h1>
+<p class="text-sm text-on-surface-variant mb-8">Radiant RT — Symptom Tracker · Effective: April 17, 2026 · Last updated: April 17, 2026</p>
 
-  <h2>1. Who we are</h2>
-  <p>RADIANT ONCOLOGY WELLNESS LLC ("we", "us", "our") operates the Radiant RT mobile application (the "App"). The App is designed to help patients undergoing radiation therapy (RT) track symptoms, access educational content, and use guided audio sessions.</p>
-  <p>If you have questions about this Privacy Policy, contact us at <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a> or in writing at 3644 Interlake Ave N, Seattle, WA 98103, USA.</p>
+<h2>1. Who we are</h2>
+<p>RADIANT ONCOLOGY WELLNESS LLC ("we", "us", "our") operates the Radiant RT mobile application (the "App"). The App is designed to help patients undergoing radiation therapy (RT) track symptoms, access educational content, and use guided audio sessions.</p>
+<p>If you have questions about this Privacy Policy, contact us at <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a> or in writing at 3644 Interlake Ave N, Seattle, WA 98103, USA.</p>
 
-  <h2>2. Important: this App is not a medical device</h2>
-  <p>Radiant RT is an educational and self‑tracking tool. It does <strong>not</strong> provide medical advice, diagnosis, or treatment, and is <strong>not</strong> a medical device. Information you record is for your personal reference and to share with your own healthcare team. See our <a href="./terms-of-use.html">Terms of Use</a> for the full disclaimer.</p>
+<h2>2. Important: this App is not a medical device</h2>
+<p>Radiant RT is an educational and self‑tracking tool. It does <strong>not</strong> provide medical advice, diagnosis, or treatment, and is <strong>not</strong> a medical device. Information you record is for your personal reference and to share with your own healthcare team. See our <a href="terms-of-use.html">Terms of Use</a> for the full disclaimer.</p>
 
-  <h2>3. What we collect</h2>
+<h2>3. What we collect</h2>
 
-  <h3>3.1 Account information</h3>
-  <ul>
-    <li>Email address (when you sign in with email, Apple, or Google)</li>
-    <li>A unique user ID generated by our authentication provider</li>
-    <li>Name (only if you choose to share it via Apple Sign‑In or Google Sign‑In)</li>
-  </ul>
+<h3>3.1 Account information</h3>
+<ul>
+<li>Email address (when you sign in with email, Apple, or Google)</li>
+<li>A unique user ID generated by our authentication provider</li>
+<li>Name (only if you choose to share it via Apple Sign‑In or Google Sign‑In)</li>
+</ul>
 
-  <h3>3.2 Health‑related self‑reported information</h3>
-  <p>You voluntarily enter the following into the App:</p>
-  <ul>
-    <li>Treatment start date</li>
-    <li>Treatment site (e.g., breast, head/neck, prostate, lung, pelvic, CNS/brain, or "other")</li>
-    <li>Daily symptom ratings on a 1–10 scale for <strong>Energy / Fatigue, Skin, Pain, Mood, Sleep</strong></li>
-    <li>Optional free‑text notes you add to check‑ins</li>
-  </ul>
-  <p>We treat this information as sensitive personal data and apply additional safeguards (see Section 6).</p>
-  <blockquote>We are not a HIPAA Covered Entity and this information is provided by you for your own tracking. If you are using the App at the direction of a provider operating under HIPAA, please review your provider's privacy notice for how they handle information you subsequently share with them.</blockquote>
+<h3>3.2 Health‑related self‑reported information</h3>
+<p>You voluntarily enter the following into the App:</p>
+<ul>
+<li>Treatment start date</li>
+<li>Treatment site (e.g., breast, head/neck, prostate, lung, pelvic, CNS/brain, or "other")</li>
+<li>Daily symptom ratings on a 1–10 scale for <strong>Energy / Fatigue, Skin, Pain, Mood, Sleep</strong></li>
+<li>Optional free‑text notes you add to check‑ins</li>
+</ul>
+<p>We treat this information as sensitive personal data and apply additional safeguards (see Section 6).</p>
+<blockquote><p>We are not a HIPAA Covered Entity and this information is provided by you for your own tracking. If you are using the App at the direction of a provider operating under HIPAA, please review your provider's privacy notice for how they handle information you subsequently share with them.</p></blockquote>
 
-  <h3>3.3 Subscription and purchase information</h3>
-  <p>Subscriptions are processed by Apple (App Store) or Google (Google Play). We receive <strong>only</strong> subscription status and receipts via our subscription provider (RevenueCat). <strong>We never receive your credit card number or billing address.</strong></p>
+<h3>3.3 Subscription and purchase information</h3>
+<p>Subscriptions are processed by Apple (App Store) or Google (Google Play). We receive <strong>only</strong> subscription status and receipts via our subscription provider (RevenueCat). <strong>We never receive your credit card number or billing address.</strong></p>
 
-  <h3>3.4 Device and technical information</h3>
-  <ul>
-    <li>Device type, OS version, app version, language, timezone</li>
-    <li>A device identifier used to deliver push notifications (via OneSignal)</li>
-    <li>Diagnostic / crash information (if enabled by the platform)</li>
-  </ul>
+<h3>3.4 Device and technical information</h3>
+<ul>
+<li>Device type, OS version, app version, language, timezone</li>
+<li>A device identifier used to deliver push notifications (via OneSignal)</li>
+<li>Diagnostic / crash information (if enabled by the platform)</li>
+</ul>
 
-  <h3>3.5 Usage information</h3>
-  <ul>
-    <li>Which screens you view and which features you use, at an aggregated level, to improve the App</li>
-    <li>Timestamps of check‑ins (to show you trends over time)</li>
-  </ul>
+<h3>3.5 Usage information</h3>
+<ul>
+<li>Which screens you view and which features you use, at an aggregated level, to improve the App</li>
+<li>Timestamps of check‑ins (to show you trends over time)</li>
+</ul>
 
-  <h3>3.6 Information we do <em>not</em> collect</h3>
-  <ul>
-    <li>Precise location</li>
-    <li>Apple Health / Google Health Connect data</li>
-    <li>Microphone or camera input</li>
-    <li>Contacts, photos, or calendar data</li>
-  </ul>
-  <p><strong>We do not sell your personal information.</strong></p>
+<h3>3.6 Information we do <em>not</em> collect</h3>
+<ul>
+<li>Precise location</li>
+<li>Apple Health / Google Health Connect data</li>
+<li>Microphone or camera input</li>
+<li>Contacts, photos, or calendar data</li>
+</ul>
+<p><strong>We do not sell your personal information.</strong></p>
 
-  <h2>4. How we use your information</h2>
-  <ol>
-    <li>Provide and operate the App, including showing you your own history and trends</li>
-    <li>Deliver evidence‑informed educational tips that match the symptoms and treatment week you've entered</li>
-    <li>Authenticate you and keep your account secure</li>
-    <li>Process your subscription (if you choose to subscribe)</li>
-    <li>Send push notifications you've opted into</li>
-    <li>Diagnose crashes and fix bugs</li>
-    <li>Improve the App by understanding which features are used</li>
-    <li>Comply with legal obligations</li>
-  </ol>
-  <p>We do <strong>not</strong> use your health‑related information to make automated decisions that have legal or similarly significant effects on you.</p>
+<h2>4. How we use your information</h2>
+<ol>
+<li>Provide and operate the App, including showing you your own history and trends</li>
+<li>Deliver evidence‑informed educational tips that match the symptoms and treatment week you've entered</li>
+<li>Authenticate you and keep your account secure</li>
+<li>Process your subscription (if you choose to subscribe)</li>
+<li>Send push notifications you've opted into</li>
+<li>Diagnose crashes and fix bugs</li>
+<li>Improve the App by understanding which features are used</li>
+<li>Comply with legal obligations</li>
+</ol>
+<p>We do <strong>not</strong> use your health‑related information to make automated decisions that have legal or similarly significant effects on you.</p>
 
-  <h2>5. Legal bases (GDPR / UK GDPR users)</h2>
-  <ul>
-    <li><strong>Contract</strong> — to provide the App you signed up for</li>
-    <li><strong>Consent</strong> — for health‑related data and push notifications; withdrawable at any time</li>
-    <li><strong>Legitimate interests</strong> — for security, diagnostics, and basic usage analytics, balanced against your rights</li>
-    <li><strong>Legal obligation</strong> — where we are required to retain or disclose information</li>
-  </ul>
+<h2>5. Legal bases (GDPR / UK GDPR users)</h2>
+<ul>
+<li><strong>Contract</strong> — to provide the App you signed up for</li>
+<li><strong>Consent</strong> — for health‑related data and push notifications; withdrawable at any time</li>
+<li><strong>Legitimate interests</strong> — for security, diagnostics, and basic usage analytics, balanced against your rights</li>
+<li><strong>Legal obligation</strong> — where we are required to retain or disclose information</li>
+</ul>
 
-  <h2>6. How we protect your information</h2>
-  <ul>
-    <li>All network traffic uses TLS (HTTPS).</li>
-    <li>Data at rest in our backend is encrypted.</li>
-    <li>Access to your data is restricted by row‑level security policies tied to your account.</li>
-    <li>Personnel access to production data is limited to staff with a specific operational need.</li>
-    <li>Health‑related self‑reported information is treated with additional internal access restrictions.</li>
-  </ul>
-  <p>If we become aware of a breach that affects your personal information, we will notify you and, where required, regulators.</p>
+<h2>6. How we protect your information</h2>
+<ul>
+<li>All network traffic uses TLS (HTTPS).</li>
+<li>Data at rest in our backend is encrypted.</li>
+<li>Access to your data is restricted by row‑level security policies tied to your account.</li>
+<li>Personnel access to production data is limited to staff with a specific operational need.</li>
+<li>Health‑related self‑reported information is treated with additional internal access restrictions.</li>
+</ul>
+<p>If we become aware of a breach that affects your personal information, we will notify you and, where required, regulators.</p>
 
-  <h2>7. Third‑party service providers</h2>
-  <table>
-    <thead><tr><th>Provider</th><th>Purpose</th><th>Data shared</th><th>Location</th></tr></thead>
-    <tbody>
-      <tr><td>Supabase, Inc.</td><td>Authentication, database, backend</td><td>Account data, symptom entries, check‑ins</td><td>United States</td></tr>
-      <tr><td>Apple Inc.</td><td>Sign in with Apple, App Store subscriptions</td><td>Email (relayed), purchase receipts</td><td>Per your Apple account</td></tr>
-      <tr><td>Google LLC</td><td>Sign in with Google, Google Play subscriptions</td><td>Email, purchase receipts</td><td>United States</td></tr>
-      <tr><td>RevenueCat, Inc.</td><td>Subscription state management</td><td>Purchase receipts, anonymous user ID</td><td>United States</td></tr>
-      <tr><td>OneSignal, Inc.</td><td>Push notification delivery</td><td>Anonymous device token, app language</td><td>United States</td></tr>
-      <tr><td>Expo (650 Industries, Inc.)</td><td>OTA updates, crash reporting</td><td>App version, device type, crash logs</td><td>United States</td></tr>
-    </tbody>
-  </table>
+<h2>7. Third‑party service providers</h2>
+<table>
+<thead><tr><th>Provider</th><th>Purpose</th><th>Data shared</th><th>Location</th></tr></thead>
+<tbody>
+<tr><td>Supabase, Inc.</td><td>Authentication, database, backend</td><td>Account data, symptom entries, check‑ins</td><td>United States</td></tr>
+<tr><td>Apple Inc.</td><td>Sign in with Apple, App Store subscriptions</td><td>Email (relayed), purchase receipts</td><td>Per your Apple account</td></tr>
+<tr><td>Google LLC</td><td>Sign in with Google, Google Play subscriptions</td><td>Email, purchase receipts</td><td>United States</td></tr>
+<tr><td>RevenueCat, Inc.</td><td>Subscription state management</td><td>Purchase receipts, anonymous user ID</td><td>United States</td></tr>
+<tr><td>OneSignal, Inc.</td><td>Push notification delivery</td><td>Anonymous device token, app language</td><td>United States</td></tr>
+<tr><td>Expo (650 Industries, Inc.)</td><td>OTA updates, crash reporting</td><td>App version, device type, crash logs</td><td>United States</td></tr>
+</tbody>
+</table>
 
-  <h2>8. International data transfers</h2>
-  <p>Our primary processing occurs in the United States. Where required, we rely on Standard Contractual Clauses or equivalent mechanisms.</p>
+<h2>8. International data transfers</h2>
+<p>Our primary processing occurs in the United States. Where required, we rely on Standard Contractual Clauses or equivalent mechanisms.</p>
 
-  <h2>9. How long we keep your information</h2>
-  <ul>
-    <li><strong>Account data:</strong> while your account is active</li>
-    <li><strong>Symptom entries / check‑ins:</strong> while your account is active</li>
-    <li><strong>Subscription receipts:</strong> up to 7 years (tax/dispute)</li>
-    <li><strong>Diagnostic / crash logs:</strong> up to 90 days</li>
-    <li><strong>Aggregated analytics:</strong> up to 24 months</li>
-  </ul>
-  <p>When you delete your account, we delete your account data and symptom entries within 30 days, except where longer retention is legally required.</p>
+<h2>9. How long we keep your information</h2>
+<ul>
+<li><strong>Account data:</strong> while your account is active</li>
+<li><strong>Symptom entries / check‑ins:</strong> while your account is active</li>
+<li><strong>Subscription receipts:</strong> up to 7 years (tax/dispute)</li>
+<li><strong>Diagnostic / crash logs:</strong> up to 90 days</li>
+<li><strong>Aggregated analytics:</strong> up to 24 months</li>
+</ul>
+<p>When you delete your account, we delete your account data and symptom entries within 30 days, except where longer retention is legally required.</p>
 
-  <h2>10. Your rights and choices</h2>
-  <ul>
-    <li>Access, correction, deletion, portability, objection, withdrawal of consent (depending on your jurisdiction)</li>
-    <li>Delete your account in‑app under <strong>More → Profile → Delete Account</strong></li>
-    <li>Email <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a> to exercise any right — we respond within 30 days</li>
-  </ul>
-  <p><strong>California residents:</strong> We do not sell or share your personal information for cross‑context behavioral advertising, and we do not use sensitive personal information for any purpose other than those described in Section 4.</p>
+<h2>10. Your rights and choices</h2>
+<ul>
+<li>Access, correction, deletion, portability, objection, withdrawal of consent (depending on your jurisdiction)</li>
+<li>Delete your account in‑app under <strong>More → Profile → Delete Account</strong></li>
+<li>Email <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a> to exercise any right — we respond within 30 days</li>
+</ul>
+<p><strong>California residents:</strong> We do not sell or share your personal information for cross‑context behavioral advertising, and we do not use sensitive personal information for any purpose other than those described in Section 4.</p>
 
-  <h2>11. Children's privacy</h2>
-  <p>The App is not directed to children under 13 (or under 16 in the EEA/UK). We do not knowingly collect personal information from children.</p>
+<h2>11. Children's privacy</h2>
+<p>The App is not directed to children under 13 (or under 16 in the EEA/UK). We do not knowingly collect personal information from children.</p>
 
-  <h2>12. Changes to this policy</h2>
-  <p>Material changes will be notified in the App or by email before they take effect. The "Last updated" date above reflects the most recent revision.</p>
+<h2>12. Changes to this policy</h2>
+<p>Material changes will be notified in the App or by email before they take effect. The "Last updated" date above reflects the most recent revision.</p>
 
-  <h2>13. Contact</h2>
-  <p>
-    Privacy: <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a><br />
-    Support: <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a><br />
-    Mail: RADIANT ONCOLOGY WELLNESS LLC, 3644 Interlake Ave N, Seattle, WA 98103, USA<br />
-    Web: <a href="https://radiantrtapp.com">https://radiantrtapp.com</a>
-  </p>
+<h2>13. Contact</h2>
+<p>
+Privacy: <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a><br/>
+Support: <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a><br/>
+Mail: RADIANT ONCOLOGY WELLNESS LLC, 3644 Interlake Ave N, Seattle, WA 98103, USA<br/>
+Web: <a href="https://radiantrtapp.com">https://radiantrtapp.com</a>
+</p>
+</main>
+<footer class="bg-surface-container-low py-12 px-8 border-t border-outline-variant/40">
+<div class="max-w-5xl mx-auto text-center text-sm text-on-surface-variant">
+<p class="mb-2">© 2026 Radiant Oncology Wellness LLC. Daily support for radiation therapy patients.</p>
+<p>
+<a class="hover:text-primary" href="index.html">Home</a> ·
+<a class="hover:text-primary" href="support.html">Support</a> ·
+<a class="hover:text-primary" href="terms-of-use.html">Terms</a> ·
+<a class="hover:text-primary" href="delete-account.html">Delete Account</a> ·
+<a class="hover:text-primary" href="physicians.html">For Clinicians</a>
+</p>
+</div>
+</footer>
 </body>
 </html>

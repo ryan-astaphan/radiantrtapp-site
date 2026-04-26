@@ -1,127 +1,168 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Support · Radiant RT</title>
-  <meta name="description" content="Help and support for the Radiant RT app." />
-  <meta name="robots" content="noindex" />
-  <style>
-    :root { color-scheme: light dark; }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #0f172a;
-      background: #f8fafc;
-    }
-    @media (prefers-color-scheme: dark) {
-      body { color: #e2e8f0; background: #0b1220; }
-      details { background: #0f172a; border-color: #1e293b; }
-      a { color: #38bdf8; }
-    }
-    main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
-    h1 { font-size: 2rem; margin: 0 0 0.25rem; }
-    h2 { margin: 2rem 0 0.5rem; font-size: 1.15rem; }
-    p.lead { color: #475569; margin-top: 0; }
-    details {
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin: 10px 0;
-    }
-    details[open] { box-shadow: 0 2px 10px rgba(15,23,42,0.06); }
-    summary { font-weight: 600; cursor: pointer; }
-    .alert {
-      border-left: 4px solid #dc2626;
-      background: rgba(220,38,38,0.08);
-      padding: 12px 16px;
-      border-radius: 8px;
-      margin: 16px 0;
-      font-size: 0.95rem;
-    }
-    a { color: #0284c7; }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Support · Radiant RT</title>
+<meta name="description" content="Help and support for the Radiant RT app."/>
+<meta name="robots" content="noindex"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Public+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#0EA5E9",
+                        "background": "#ffffff",
+                        "on-background": "#0F172A",
+                        "surface-container-low": "#F9FAFB",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#475569",
+                        "outline-variant": "#E2E8F0"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; background-color: #ffffff; color: #0F172A; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); }
+        .alert-emergency { background: #FEF2F2; border-left: 4px solid #DC2626; color: #7F1D1D; }
+    </style>
 </head>
-<body>
-  <main>
-    <p><a href="./">&larr; Back to Radiant RT</a></p>
-    <h1>Support</h1>
-    <p class="lead">We're a small team. If you email us, a human reads it and replies.</p>
+<body class="bg-background text-on-background">
+<nav class="fixed top-0 left-0 right-0 z-50 glass-nav shadow-sm">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-5xl mx-auto">
+<a href="index.html" class="text-2xl font-bold text-primary tracking-tight font-headline">Radiant RT</a>
+<a href="index.html" class="text-sm text-slate-600 font-medium hover:text-primary transition-colors">← Home</a>
+</div>
+</nav>
+<main class="max-w-3xl mx-auto px-6 pt-32 pb-24">
+<h1 class="text-4xl font-extrabold tracking-tight mb-2">Support</h1>
+<p class="text-lg text-on-surface-variant mb-8">We're a small team. If you email us, a human reads it and replies.</p>
 
-    <div class="alert">
-      <strong>Medical emergency?</strong> Do not use this page or the app. Call your local emergency number (911 US / 112 EU / 999 UK) or contact your care team immediately.
-    </div>
+<div class="alert-emergency p-4 rounded-lg my-6">
+<p><strong>Medical emergency?</strong> Do not use this page or the app. Call your local emergency number (911 US / 112 EU / 999 UK) or contact your care team immediately.</p>
+</div>
 
-    <h2>Contact us</h2>
-    <p>
-      Email: <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a><br />
-      Mailing address: RADIANT ONCOLOGY WELLNESS LLC, 3644 Interlake Ave N, Seattle, WA 98103, USA<br />
-      Response time: typically within 2 business days.
-    </p>
+<h2 class="text-2xl font-bold mt-12 mb-4">Contact us</h2>
+<div class="bg-surface-container-low border border-outline-variant rounded-2xl p-6 mb-12">
+<p class="text-on-surface-variant leading-relaxed">
+Email: <a class="text-primary font-semibold hover:underline" href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a><br/>
+Mailing address: RADIANT ONCOLOGY WELLNESS LLC, 3644 Interlake Ave N, Seattle, WA 98103, USA<br/>
+Response time: typically within 2 business days.
+</p>
+</div>
 
-    <h2>Frequently asked questions</h2>
+<h2 class="text-2xl font-bold mb-6">Frequently asked questions</h2>
 
-    <details>
-      <summary>Is this a medical device?</summary>
-      <p>No. Radiant RT is an educational and self‑tracking tool. It does not provide diagnosis, treatment, or real‑time monitoring. Always follow the guidance of your oncology team.</p>
-    </details>
+<div class="space-y-3">
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-5 cursor-pointer open:border-primary transition-all">
+<summary class="list-none flex justify-between items-center font-semibold">
+Is this a medical device?
+<span class="ml-4 text-on-surface-variant group-open:rotate-180 transition-transform">▾</span>
+</summary>
+<p class="pt-3 text-on-surface-variant text-sm leading-relaxed">No. Radiant RT is an educational and self‑tracking tool. It does not provide diagnosis, treatment, or real‑time monitoring. Always follow the guidance of your oncology team.</p>
+</details>
 
-    <details>
-      <summary>How do I cancel my subscription?</summary>
-      <p><strong>On iPhone:</strong> Settings → your name → Subscriptions → Radiant Complete → Cancel.<br />
-      <strong>On Android:</strong> Play Store → your profile → Payments &amp; subscriptions → Subscriptions → Radiant Complete → Cancel.</p>
-      <p>Cancellations take effect at the end of the current billing period. You keep premium access until then.</p>
-    </details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-5 cursor-pointer open:border-primary transition-all">
+<summary class="list-none flex justify-between items-center font-semibold">
+How do I cancel my subscription?
+<span class="ml-4 text-on-surface-variant group-open:rotate-180 transition-transform">▾</span>
+</summary>
+<p class="pt-3 text-on-surface-variant text-sm leading-relaxed"><strong class="text-on-background">On iPhone:</strong> Settings → your name → Subscriptions → Radiant Complete → Cancel.<br/>
+<strong class="text-on-background">On Android:</strong> Play Store → your profile → Payments &amp; subscriptions → Subscriptions → Radiant Complete → Cancel.</p>
+<p class="pt-2 text-on-surface-variant text-sm leading-relaxed">Cancellations take effect at the end of the current billing period. You keep premium access until then.</p>
+</details>
 
-    <details>
-      <summary>Can I get a refund?</summary>
-      <p>Refunds are handled by the store you purchased through:</p>
-      <ul>
-        <li><a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> for App Store purchases</li>
-        <li><a href="https://play.google.com/store/account/orderhistory">play.google.com/store/account/orderhistory</a> for Google Play purchases</li>
-      </ul>
-      <p>Consumers in the EU and UK may have additional statutory rights.</p>
-    </details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-5 cursor-pointer open:border-primary transition-all">
+<summary class="list-none flex justify-between items-center font-semibold">
+Can I get a refund?
+<span class="ml-4 text-on-surface-variant group-open:rotate-180 transition-transform">▾</span>
+</summary>
+<p class="pt-3 text-on-surface-variant text-sm leading-relaxed">Refunds are handled by the store you purchased through:</p>
+<ul class="text-on-surface-variant text-sm leading-relaxed list-disc pl-6 mt-2 space-y-1">
+<li><a class="text-primary hover:underline" href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> for App Store purchases</li>
+<li><a class="text-primary hover:underline" href="https://play.google.com/store/account/orderhistory">play.google.com/store/account/orderhistory</a> for Google Play purchases</li>
+</ul>
+<p class="pt-2 text-on-surface-variant text-sm leading-relaxed">Consumers in the EU and UK may have additional statutory rights.</p>
+</details>
 
-    <details>
-      <summary>How do I delete my account and data?</summary>
-      <p>See our full <a href="./delete-account.html">Delete your account</a> page for step-by-step instructions, the data we remove, and what is kept for legal or tax reasons.</p>
-      <p>Quick version — in the app: <strong>More → Profile → Delete Account</strong>. This deletes your account and all associated check‑in data within 30 days. You can also email <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a> from the address on the account.</p>
-    </details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-5 cursor-pointer open:border-primary transition-all">
+<summary class="list-none flex justify-between items-center font-semibold">
+How do I delete my account and data?
+<span class="ml-4 text-on-surface-variant group-open:rotate-180 transition-transform">▾</span>
+</summary>
+<p class="pt-3 text-on-surface-variant text-sm leading-relaxed">See our full <a class="text-primary hover:underline" href="delete-account.html">Delete your account</a> page for step-by-step instructions, the data we remove, and what is kept for legal or tax reasons.</p>
+<p class="pt-2 text-on-surface-variant text-sm leading-relaxed">Quick version — in the app: <strong class="text-on-background">More → Profile → Delete Account</strong>. This deletes your account and all associated check‑in data within 30 days. You can also email <a class="text-primary hover:underline" href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a> from the address on the account.</p>
+</details>
 
-    <details>
-      <summary>My symptoms seem wrong — what should I do?</summary>
-      <p>If you tapped the wrong score, just log an updated check-in the next day — the graph will reflect the new value. If something feels medically wrong or worrying, contact your care team, not us.</p>
-    </details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-5 cursor-pointer open:border-primary transition-all">
+<summary class="list-none flex justify-between items-center font-semibold">
+My symptoms seem wrong — what should I do?
+<span class="ml-4 text-on-surface-variant group-open:rotate-180 transition-transform">▾</span>
+</summary>
+<p class="pt-3 text-on-surface-variant text-sm leading-relaxed">If you tapped the wrong score, just log an updated check-in the next day — the graph will reflect the new value. If something feels medically wrong or worrying, contact your care team, not us.</p>
+</details>
 
-    <details>
-      <summary>I can't sign in.</summary>
-      <p>Try these in order: (1) restart the app; (2) make sure the email or Apple/Google account is the same one you used to sign up; (3) use "Forgot password" if you used email sign‑up. If none of that works, email <a href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a> with your device model and OS version.</p>
-    </details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-5 cursor-pointer open:border-primary transition-all">
+<summary class="list-none flex justify-between items-center font-semibold">
+I can't sign in.
+<span class="ml-4 text-on-surface-variant group-open:rotate-180 transition-transform">▾</span>
+</summary>
+<p class="pt-3 text-on-surface-variant text-sm leading-relaxed">Try these in order: (1) restart the app; (2) make sure the email or Apple/Google account is the same one you used to sign up; (3) use "Forgot password" if you used email sign‑up. If none of that works, email <a class="text-primary hover:underline" href="mailto:support@mail.radiantrtapp.com">support@mail.radiantrtapp.com</a> with your device model and OS version.</p>
+</details>
 
-    <details>
-      <summary>What data do you collect?</summary>
-      <p>Only what's needed to run the app: your account email, the symptom entries you add, and basic usage/diagnostic information. We never sell your data. See the <a href="./privacy-policy.html">Privacy Policy</a> for the full list.</p>
-    </details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-5 cursor-pointer open:border-primary transition-all">
+<summary class="list-none flex justify-between items-center font-semibold">
+What data do you collect?
+<span class="ml-4 text-on-surface-variant group-open:rotate-180 transition-transform">▾</span>
+</summary>
+<p class="pt-3 text-on-surface-variant text-sm leading-relaxed">Only what's needed to run the app: your account email, the symptom entries you add, and basic usage/diagnostic information. We never sell your data. See the <a class="text-primary hover:underline" href="privacy-policy.html">Privacy Policy</a> for the full list.</p>
+</details>
 
-    <details>
-      <summary>Is Radiant RT available on Android and iOS?</summary>
-      <p>Yes — iOS 15+ and Android 8+. We're shipping first to English speakers; more languages will come.</p>
-    </details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-5 cursor-pointer open:border-primary transition-all">
+<summary class="list-none flex justify-between items-center font-semibold">
+Is Radiant RT available on Android and iOS?
+<span class="ml-4 text-on-surface-variant group-open:rotate-180 transition-transform">▾</span>
+</summary>
+<p class="pt-3 text-on-surface-variant text-sm leading-relaxed">Yes — iOS 15+ and Android 8+. We're shipping first to English speakers; more languages will come.</p>
+</details>
 
-    <details>
-      <summary>Who is this app for?</summary>
-      <p>Anyone undergoing external‑beam radiation therapy (breast, head/neck, prostate, lung, pelvic, CNS/brain, or other). Spouses, partners, and caregivers use it too.</p>
-    </details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-5 cursor-pointer open:border-primary transition-all">
+<summary class="list-none flex justify-between items-center font-semibold">
+Who is this app for?
+<span class="ml-4 text-on-surface-variant group-open:rotate-180 transition-transform">▾</span>
+</summary>
+<p class="pt-3 text-on-surface-variant text-sm leading-relaxed">Anyone undergoing external‑beam radiation therapy (breast, head/neck, prostate, lung, pelvic, CNS/brain, or other). Spouses, partners, and caregivers use it too.</p>
+</details>
 
-    <details>
-      <summary>Can my oncologist see my data?</summary>
-      <p>Not directly. Trends are designed for you to show in person during your visits. We are not integrated with any hospital EHR. Your data is only yours.</p>
-    </details>
-
-    <p style="margin-top:48px;"><a href="./privacy-policy.html">Privacy Policy</a> · <a href="./terms-of-use.html">Terms of Use</a></p>
-  </main>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-5 cursor-pointer open:border-primary transition-all">
+<summary class="list-none flex justify-between items-center font-semibold">
+Can my oncologist see my data?
+<span class="ml-4 text-on-surface-variant group-open:rotate-180 transition-transform">▾</span>
+</summary>
+<p class="pt-3 text-on-surface-variant text-sm leading-relaxed">Not directly. Trends are designed for you to show in person during your visits. We are not integrated with any hospital EHR. Your data is only yours.</p>
+</details>
+</div>
+</main>
+<footer class="bg-surface-container-low py-12 px-8 border-t border-outline-variant/40">
+<div class="max-w-5xl mx-auto text-center text-sm text-on-surface-variant">
+<p class="mb-2">© 2026 Radiant Oncology Wellness LLC. Daily support for radiation therapy patients.</p>
+<p>
+<a class="hover:text-primary" href="index.html">Home</a> ·
+<a class="hover:text-primary" href="privacy-policy.html">Privacy</a> ·
+<a class="hover:text-primary" href="terms-of-use.html">Terms</a> ·
+<a class="hover:text-primary" href="delete-account.html">Delete Account</a> ·
+<a class="hover:text-primary" href="physicians.html">For Clinicians</a>
+</p>
+</div>
+</footer>
 </body>
 </html>
