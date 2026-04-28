@@ -91,22 +91,24 @@
 ========================================================================
 EMAIL CAPTURE FORMS — INTEGRATION NOTE
 ========================================================================
-There are two waitlist forms on this page (hero + final CTA).
-Both are pre-wired for Mailchimp's "embedded form" endpoint.
+The two waitlist forms on this page (hero + final CTA) post to
+MailerLite (account 2297170, form ID 185915772853290445 — the
+"Radiant RT Waitlist" form). New signups are added to the
+"Beta Waitlist" subscriber group.
 
-To activate:
-  1) In Mailchimp → Audience → Signup forms → Embedded forms,
-     copy the action URL. It looks like:
-       https://YOURNAME.us21.list-manage.com/subscribe/post?u=USER_ID&id=LIST_ID
-  2) Replace REPLACE_ME_MAILCHIMP_ACTION below with that URL.
-  3) Replace REPLACE_ME_HONEYPOT_NAME with the bot-trap field name
-     Mailchimp gives you (looks like b_USER_ID_LIST_ID).
+Behavior on submit:
+  - POSTs to MailerLite's subscribe endpoint
+  - Opens MailerLite's hosted "Thank you" page in a new tab
+    (target="_blank")
+  - Subject to double opt-in: each subscriber gets a confirmation
+    email and only counts as confirmed after they click the link
 
-For ConvertKit/Kit instead: action becomes
-  https://app.convertkit.com/forms/FORM_ID/subscriptions
-  and the email field's name attribute becomes "email_address".
+To add custom fields later (e.g., signup-source tracking to tell
+hero submissions from final-CTA submissions), first define the
+custom field in MailerLite (Subscribers → Fields), then add a
+hidden input here whose name matches: fields[your_field_name].
 
-The clinician form on physicians.html is wired for Formspree —
+The clinician form on clinicians.html is wired separately —
 see the comment block on that page.
 ========================================================================
 -->
@@ -138,12 +140,12 @@ see the comment block on that page.
 <p class="text-xl text-on-surface-variant leading-relaxed max-w-xl">
                     Built specifically for radiation therapy patients — and matched to where you are in treatment.
                 </p>
-<form action="REPLACE_ME_MAILCHIMP_ACTION" method="post" target="_blank" novalidate class="flex flex-col sm:flex-row gap-4">
+<form action="https://assets.mailerlite.com/jsonp/2297170/forms/185915772853290445/subscribe" method="post" target="_blank" class="flex flex-col sm:flex-row gap-4">
 <label class="sr-only" for="hero-email">Your email address</label>
-<input id="hero-email" name="EMAIL" required aria-label="Enter your email address to join the waitlist" class="flex-1 px-6 py-4 rounded-xl bg-surface-container-lowest border-none shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-on-surface" placeholder="Your email address" type="email"/>
+<input id="hero-email" name="fields[email]" required autocomplete="email" aria-label="Enter your email address to join the waitlist" class="flex-1 px-6 py-4 rounded-xl bg-surface-container-lowest border-none shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-on-surface" placeholder="Your email address" type="email"/>
 <button type="submit" class="primary-gradient text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all">Be First to Know →</button>
-<!-- Mailchimp honeypot — bot trap. Replace name attribute when wiring up. -->
-<div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="REPLACE_ME_HONEYPOT_NAME" tabindex="-1" value=""/></div>
+<input type="hidden" name="ml-submit" value="1"/>
+<input type="hidden" name="anticsrf" value="true"/>
 </form>
 <p class="pt-6 text-sm text-on-surface-variant leading-relaxed">
                     Created by a PA-C specializing in radiation oncology · Informed by 90+ clinical trials · iOS &amp; Android · Free to start
@@ -588,11 +590,12 @@ see the comment block on that page.
 <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
 <h2 class="text-4xl md:text-5xl font-extrabold mb-6 relative z-10 leading-tight">Radiation therapy is hard enough. Having support shouldn't require a waiting room.</h2>
 <p class="text-xl mb-12 max-w-2xl mx-auto relative z-10 text-white/90">Get launch updates for the first app built specifically for radiation therapy patients.</p>
-<form action="REPLACE_ME_MAILCHIMP_ACTION" method="post" target="_blank" novalidate class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative z-10 mb-6">
+<form action="https://assets.mailerlite.com/jsonp/2297170/forms/185915772853290445/subscribe" method="post" target="_blank" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative z-10 mb-6">
 <label class="sr-only" for="cta-email">Your email address</label>
-<input id="cta-email" name="EMAIL" required aria-label="Enter your email address to join the waitlist" class="flex-1 px-6 py-4 rounded-xl bg-white/95 border-none focus:ring-2 focus:ring-white focus:outline-none text-on-surface" placeholder="Your email address" type="email"/>
+<input id="cta-email" name="fields[email]" required autocomplete="email" aria-label="Enter your email address to join the waitlist" class="flex-1 px-6 py-4 rounded-xl bg-white/95 border-none focus:ring-2 focus:ring-white focus:outline-none text-on-surface" placeholder="Your email address" type="email"/>
 <button type="submit" class="bg-white text-primary px-8 py-4 rounded-xl font-bold hover:bg-primary-fixed transition-all">Be First to Know →</button>
-<div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="REPLACE_ME_HONEYPOT_NAME" tabindex="-1" value=""/></div>
+<input type="hidden" name="ml-submit" value="1"/>
+<input type="hidden" name="anticsrf" value="true"/>
 </form>
 <p class="text-sm text-white/80 relative z-10 mb-8">Currently in beta testing with radiation therapy patients. Public launch coming soon on iOS and Android.</p>
 <p class="italic text-white/90 relative z-10">The support that exists between your appointments.</p>
@@ -600,7 +603,7 @@ see the comment block on that page.
 </section>
 <!-- Section 12: Clinician Callout (inline above footer) -->
 <section class="py-10 px-8 border-t border-outline-variant/40 text-center">
-<p class="text-on-surface-variant"><strong class="text-on-background">Healthcare provider?</strong> <a class="text-primary font-semibold hover:underline" href="physicians.html">Learn how to recommend Radiant to your patients →</a></p>
+<p class="text-on-surface-variant"><strong class="text-on-background">Healthcare provider?</strong> <a class="text-primary font-semibold hover:underline" href="clinicians.html">Learn how to recommend Radiant to your patients →</a></p>
 </section>
 <!-- Footer -->
 <footer class="bg-surface-container-low pt-24 pb-12 px-12">
@@ -628,7 +631,7 @@ see the comment block on that page.
 <div>
 <h4 class="font-bold mb-6">Company</h4>
 <ul class="space-y-4">
-<li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="physicians.html">For Clinicians</a></li>
+<li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="clinicians.html">For Clinicians</a></li>
 <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="privacy-policy.html">Privacy Policy</a></li>
 <li><a class="text-sm text-slate-500 hover:text-primary transition-colors" href="terms-of-use.html">Terms of Use</a></li>
 </ul>
