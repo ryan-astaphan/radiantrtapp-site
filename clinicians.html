@@ -52,23 +52,30 @@
 ========================================================================
 CLINICIAN CONTACT FORM — INTEGRATION NOTE
 ========================================================================
-The form below is pre-wired for Formspree. Why Formspree (and not the
-Mailchimp embed used on the patient waitlist): this form has three
-fields (Name, Email, Practice/Institution) which the basic Mailchimp
-embed does not handle as cleanly. Formspree captures them all and
-emails the submission to David.
+The form below posts to Web3Forms. Web3Forms (rather than the
+MailerLite endpoint used on the patient waitlist) because this is a
+1:1 inquiry channel — submissions are emailed straight to David, not
+added to a marketing list. Free tier: 250 submissions/month, plenty
+for expected clinician volume.
 
-To activate:
-  1) Sign up at https://formspree.io and create a new form.
-  2) Copy your form's endpoint — looks like
-       https://formspree.io/f/YOUR_FORM_ID
-  3) Replace REPLACE_ME_FORMSPREE_ENDPOINT below with that URL.
-  4) In the Formspree dashboard, set the notification email to
-     david@radiantrtapp.com and tag submissions as "clinicians" so
-     they're separated from the patient waitlist.
+How it works:
+  - The hidden access_key input identifies the destination account.
+    Submissions land in the inbox associated with that key
+    (currently David's: david@radiantrtapp.com).
+  - Web3Forms uses convention to populate the notification email:
+    the field named "name" becomes the sender display name,
+    "email" becomes the Reply-To. Other fields appear in the body.
+  - Bot protection: Web3Forms checks for a hidden "botcheck"
+    honeypot field (must remain empty) plus server-side spam scoring.
 
-Want to migrate to Mailchimp later? Use a Mailchimp form with custom
-merge fields FNAME and PRACTICE in addition to EMAIL.
+To swap to a different account later (e.g., from David's personal
+test account to a dedicated team inbox), generate a new access key
+at web3forms.com and replace the value of the access_key hidden
+input below. No other changes needed.
+
+Optional later: configure a custom redirect URL (Web3Forms dashboard
+→ form settings) so submissions land on a branded thank-you page
+instead of Web3Forms' default success page.
 ========================================================================
 -->
 <!-- TopNavBar -->
@@ -114,9 +121,10 @@ merge fields FNAME and PRACTICE in addition to EMAIL.
 <h2 class="text-3xl font-bold mb-3">Interested in recommending Radiant to your patients?</h2>
 <p class="text-on-surface-variant">We'll follow up with clinical information and referral resources.</p>
 </div>
-<form action="REPLACE_ME_FORMSPREE_ENDPOINT" method="POST" class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-8 shadow-sm space-y-6">
-<input type="hidden" name="_subject" value="New clinician inquiry — Radiant RT"/>
-<input type="hidden" name="_tags" value="clinicians"/>
+<form action="https://api.web3forms.com/submit" method="POST" class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-8 shadow-sm space-y-6">
+<input type="hidden" name="access_key" value="46e3bf15-8f43-4b94-a758-551b713562d8"/>
+<input type="hidden" name="subject" value="New clinician inquiry — Radiant RT"/>
+<input type="hidden" name="from_name" value="Radiant RT — Clinician Inquiry"/>
 <div>
 <label class="block text-sm font-semibold mb-2" for="clinician-name">Name</label>
 <input id="clinician-name" name="name" type="text" required class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none text-on-surface" placeholder="Dr. Jane Smith"/>
@@ -129,8 +137,8 @@ merge fields FNAME and PRACTICE in addition to EMAIL.
 <label class="block text-sm font-semibold mb-2" for="clinician-practice">Practice / Institution</label>
 <input id="clinician-practice" name="practice" type="text" required class="w-full px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none text-on-surface" placeholder="Cancer Center / Hospital / Clinic"/>
 </div>
-<!-- honeypot -->
-<div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="_gotcha" tabindex="-1" value=""/></div>
+<!-- Web3Forms honeypot — must remain empty; bots fill it. -->
+<div aria-hidden="true" style="position:absolute;left:-5000px"><input type="checkbox" name="botcheck" tabindex="-1"/></div>
 <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:opacity-90 transition-all">Get in Touch</button>
 </form>
 <p class="text-center text-sm text-on-surface-variant mt-6 italic">Radiant is educational support only and is designed to complement — not replace — clinical care.</p>
