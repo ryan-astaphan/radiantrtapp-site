@@ -641,4 +641,48 @@ see the comment block on that page.
             © 2026 Radiant Oncology Wellness LLC. Daily support for radiation therapy patients.
         </div>
 </footer>
+<!--
+========================================================================
+WAITLIST FORM SUBMISSION HANDLER
+========================================================================
+Intercepts both MailerLite forms (hero + final CTA) and submits them
+via fetch, then replaces the form with an inline branded success
+message. Without this, MailerLite's JSONP endpoint returns raw JSON
+in a new tab — see comment block at top of file.
+
+Graceful degradation: target="_blank" remains on the forms in HTML,
+so if this script fails to load, submissions still reach MailerLite
+(just with the ugly JSON response in a new tab).
+========================================================================
+-->
+<script>
+  document.querySelectorAll('form[action*="mailerlite.com"]').forEach((form) => {
+    form.removeAttribute('target');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector('button[type="submit"]');
+      const originalLabel = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = 'Submitting…';
+      try {
+        await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          mode: 'no-cors',
+        });
+        const success = document.createElement('div');
+        success.className = 'text-center py-4';
+        success.innerHTML = '<p class="text-lg font-bold">Thanks — check your inbox.</p><p class="text-sm mt-2 opacity-80">We just sent a confirmation email. Click the link to join the waitlist.</p>';
+        form.replaceWith(success);
+      } catch (error) {
+        button.disabled = false;
+        button.innerHTML = originalLabel;
+        const message = document.createElement('p');
+        message.className = 'text-sm mt-3 opacity-90';
+        message.textContent = 'Something went wrong. Please try again or email david@radiantrtapp.com.';
+        form.appendChild(message);
+      }
+    });
+  });
+</script>
 </body></html>
