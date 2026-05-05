@@ -138,7 +138,7 @@ see the comment block on that page.
                     Built specifically for radiation therapy patients — and matched to where you are in treatment.
                 </p>
 <div class="space-y-3">
-<form action="https://assets.mailerlite.com/jsonp/2297170/forms/185915772853290445/subscribe" method="post" target="_blank" class="flex flex-col sm:flex-row gap-4">
+<form action="https://assets.mailerlite.com/jsonp/2297170/forms/185915772853290445/subscribe" method="post" target="_blank" data-success-style="light" class="flex flex-col sm:flex-row gap-4">
 <label class="sr-only" for="hero-email">Your email address</label>
 <input id="hero-email" name="fields[email]" required autocomplete="email" aria-label="Enter your email address to join the waitlist" class="flex-1 px-6 py-4 rounded-xl bg-surface-container-lowest border-none shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-on-surface" placeholder="Your email address" type="email"/>
 <button type="submit" class="primary-gradient text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all">Be First to Know →</button>
@@ -564,7 +564,7 @@ see the comment block on that page.
 <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
 <h2 class="text-4xl md:text-5xl font-extrabold mb-6 relative z-10 leading-tight">Radiation therapy is hard enough. Having support shouldn't require a waiting room.</h2>
 <p class="text-xl mb-12 max-w-2xl mx-auto relative z-10 text-white/90">Get launch updates for the first app built specifically for radiation therapy patients.</p>
-<form action="https://assets.mailerlite.com/jsonp/2297170/forms/185915772853290445/subscribe" method="post" target="_blank" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative z-10 mb-3">
+<form action="https://assets.mailerlite.com/jsonp/2297170/forms/185915772853290445/subscribe" method="post" target="_blank" data-success-style="dark" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative z-10 mb-3">
 <label class="sr-only" for="cta-email">Your email address</label>
 <input id="cta-email" name="fields[email]" required autocomplete="email" aria-label="Enter your email address to join the waitlist" class="flex-1 px-6 py-4 rounded-xl bg-white/95 border-none focus:ring-2 focus:ring-white focus:outline-none text-on-surface" placeholder="Your email address" type="email"/>
 <button type="submit" class="bg-white text-primary px-8 py-4 rounded-xl font-bold hover:bg-primary-fixed transition-all">Be First to Know →</button>
@@ -631,12 +631,67 @@ so if this script fails to load, submissions still reach MailerLite
 ========================================================================
 -->
 <script>
+  const buildSuccessCard = (style, email) => {
+    const isDark = style === 'dark';
+    const card = document.createElement('div');
+    card.setAttribute('role', 'status');
+    card.setAttribute('aria-live', 'polite');
+    card.className = isDark
+      ? 'bg-white p-6 rounded-2xl shadow-xl flex gap-4 items-start max-w-lg mx-auto text-left relative z-10 mb-6'
+      : 'bg-surface-container-lowest border border-outline-variant border-l-4 border-l-primary p-6 rounded-2xl shadow-sm flex gap-4 items-start max-w-xl';
+
+    const icon = document.createElement('span');
+    icon.className = 'material-symbols-outlined text-primary text-3xl shrink-0 mt-0.5';
+    icon.textContent = 'check_circle';
+
+    const body = document.createElement('div');
+    body.className = 'flex-1';
+
+    const headline = document.createElement('p');
+    headline.className = isDark
+      ? 'font-bold text-lg text-primary'
+      : 'font-bold text-lg text-on-background';
+    headline.textContent = 'Almost there — confirm your email';
+
+    const bodyTextClass = isDark
+      ? 'text-sm text-slate-700 mt-2 leading-relaxed'
+      : 'text-sm text-on-surface-variant mt-2 leading-relaxed';
+
+    const detail = document.createElement('p');
+    detail.className = bodyTextClass;
+    detail.append('We just sent a confirmation link to ');
+    const emailNode = document.createElement('strong');
+    emailNode.textContent = email;
+    detail.append(emailNode);
+    detail.append('. Click it to lock in your spot on the waitlist.');
+
+    const spamWrap = document.createElement('div');
+    spamWrap.className = 'mt-4';
+    const spam = document.createElement('div');
+    spam.className = 'inline-flex items-start gap-2 px-3 py-2 rounded-lg bg-amber-50 border border-amber-200';
+    const spamIcon = document.createElement('span');
+    spamIcon.className = 'material-symbols-outlined text-amber-700 text-base shrink-0 leading-none mt-0.5';
+    spamIcon.setAttribute('aria-hidden', 'true');
+    spamIcon.textContent = 'info';
+    const spamText = document.createElement('span');
+    spamText.className = 'text-sm font-medium text-amber-900 leading-snug';
+    spamText.textContent = "Don't see it? Check your spam or junk folder.";
+    spam.append(spamIcon, spamText);
+    spamWrap.append(spam);
+
+    body.append(headline, detail, spamWrap);
+    card.append(icon, body);
+    return card;
+  };
+
   document.querySelectorAll('form[action*="mailerlite.com"]').forEach((form) => {
     form.removeAttribute('target');
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const button = form.querySelector('button[type="submit"]');
       const originalLabel = button.innerHTML;
+      const emailInput = form.querySelector('input[name="fields[email]"]');
+      const email = emailInput ? emailInput.value.trim() : '';
       button.disabled = true;
       button.innerHTML = 'Submitting…';
       try {
@@ -645,9 +700,7 @@ so if this script fails to load, submissions still reach MailerLite
           body: new FormData(form),
           mode: 'no-cors',
         });
-        const success = document.createElement('div');
-        success.className = 'text-center py-4';
-        success.innerHTML = '<p class="text-lg font-bold">Thanks — check your inbox.</p><p class="text-sm mt-2 opacity-80">We just sent a confirmation email. Click the link to join the waitlist.</p>';
+        const success = buildSuccessCard(form.dataset.successStyle, email);
         form.replaceWith(success);
       } catch (error) {
         button.disabled = false;
